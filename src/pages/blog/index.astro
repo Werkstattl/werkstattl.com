@@ -1,0 +1,53 @@
+---
+import FastArrowRight from "../../components/icons/FastArrowRight.astro";
+// import Layout from "../../layouts/Layout.astro";
+import LayoutPage from "../../layouts/LayoutPage.astro";
+
+const posts = await Astro.glob("./posts/*.md");
+---
+
+<LayoutPage
+  title="Thomas Peißl's Blog"
+  name="Blog"
+  description="Check out what's happening in Thomas Peißl's world."
+>
+  <section class="py-16 grid gap-5 lg:grid-cols-2 container mx-auto">
+    {
+      posts
+        .map((article) => {
+          const { url, frontmatter } = article;
+          const date = new Date(frontmatter.published).toDateString();
+          return (
+            <div class="px-5 grid lg:px-0">
+              <article class="bg-[#F2F1ED] hover:bg-[#e4e3df] dark:hover:bg-[#181818] dark:bg-[#2d2d2d] rounded-xl p-5 flex flex-col shadow-lg drop-shadow-lg">
+                <div class="flex-1">
+                  <h2 class="text-3xl font-bold dark:text-white">
+                    {frontmatter.title}
+                  </h2>
+                  <time
+                    datetime={frontmatter.published}
+                    class="dark:text-white"
+                  >
+                    {date}
+                  </time>
+                  <p class="text-lg my-4 dark:text-white">
+                    {frontmatter.description}
+                  </p>
+                </div>
+                <div class="flex justify-end">
+                  <a
+                    href={url}
+                    class="bg-black rounded-full py-3 px-6 text-white flex gap-3 w-fit"
+                  >
+                    Read more
+                    <FastArrowRight />
+                  </a>
+                </div>
+              </article>
+            </div>
+          );
+        })
+        .reverse()
+    }
+  </section>
+</LayoutPage>

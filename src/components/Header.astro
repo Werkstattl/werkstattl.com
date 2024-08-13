@@ -1,0 +1,103 @@
+---
+import { Image } from "@astrojs/image/components";
+const navbar = [
+  {
+    title: "Blog",
+    url: "/blog",
+  }
+];
+---
+
+<header id="header" class="py-6 transition-all top-0 sticky z-10">
+  <div
+    class="flex items-center justify-between px-5 container mx-auto transition-all"
+  >
+    <a href="/">
+      <Image
+        src="/logos/werkstattl-logo.webp"
+        width={404}
+        height={87}
+        alt="Werkstattl logo"
+        format="webp"
+        class="w-32 dark:invert"
+      />
+    </a>
+    <button
+      id="menuIcon"
+      aria-label="menu"
+      class="grid gap-[2px] justify-center w-5 h-full lg:hidden"
+    >
+      <span
+        aria-hidden="true"
+        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
+      <span
+        aria-hidden="true"
+        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
+      <span
+        aria-hidden="true"
+        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
+    </button>
+    <nav
+      id="menu"
+      class="hidden lg:grid lg:relative transition-all lg:top-0 lg:left-0 lg:right-0 fixed top-24 left-3 right-3 p-5 rounded-md drop-shadow-md lg:drop-shadow-none bg-transparent lg:p-0 dark:text-white"
+    >
+      <ul
+        class="grid lg:grid-flow-col justify-items-center gap-3 lg:gap-7 text-lg"
+      >
+        {
+          navbar.map((page) => {
+            const { title, url } = page;
+            return (
+              <li>
+                <a class="hover:opacity-50 transition-all p-5" href={url}>
+                  {title}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script client:load>
+  const $header = document.querySelector("#header");
+  const $menuIcon = document.querySelector("#menuIcon");
+  const $menu = document.querySelector("#menu");
+
+  $menuIcon.addEventListener("click", () => {
+    $menu.classList.toggle("hidden");
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 1) {
+      $header.classList.remove("py-6", "bg-transparent");
+      $header.classList.add(
+        "py-3",
+        "shadow-md",
+        "bg-white",
+        "dark:bg-[#242424]"
+      );
+    } else if (window.scrollY === 0) {
+      $header.classList.remove(
+        "py-3",
+        "shadow-md",
+        "dark:bg-[#242424]",
+        "bg-white"
+      );
+      $header.classList.add("py-6", "bg-transparent");
+    }
+  });
+</script>
+
+<style>
+  #menu {
+	background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+  	#menu {
+  		color: #000;
+  	}
+  }
+</style>

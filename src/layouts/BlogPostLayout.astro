@@ -1,0 +1,85 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={"Thomas Peißl" + " - " + frontmatter.title}>
+  <section class="bg-[#F2F1ED] dark:bg-[#2d2d2d]">
+    <div class="grid gap-4 text-center px-5 py-16 container mx-auto">
+      <h1 class="text-5xl font-bold lg:text-7xl dark:text-white custom-break-word">
+        {frontmatter.title}
+      </h1>
+      <p class="text-xl lg:text-2xl dark:text-[#c3c3c3]">
+        {frontmatter.description}
+      </p>
+    </div>
+  </section>
+  <section class="blog-content">
+    <slot />
+  </section>
+</Layout>
+
+<style is:global>
+  html {
+    @apply bg-[#f2f1ed] dark:bg-[#2d2d2d];
+  }
+  .blog-content {
+    @apply container mx-auto px-5 grid gap-3 p-16;
+  }
+
+  .blog-content img {
+    @apply mx-auto;
+  }
+
+  .blog-content h2 {
+    @apply font-bold text-4xl after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-10 after:rounded-lg after:my-2 dark:text-white;
+  }
+
+  .blog-content h3 {
+    @apply font-bold text-3xl after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-10 after:rounded-lg after:my-2 dark:text-white;
+  }
+
+  .blog-content p {
+    @apply text-xl dark:text-white;
+  }
+
+  .blog-content pre {
+    @apply p-6 rounded-md bg-[#282936] text-[#e9e9f4];
+  }
+
+  .blog-content pre span {
+    @apply text-[#a1efe4];
+  }
+
+  .blog-content a {
+    @apply text-[#282828] border-[#282828] border-b border-dotted dark:text-white dark:border-white;
+  }
+
+  .blog-content .video {
+    @apply relative pb-[56.25%]  h-0;
+  }
+
+  .blog-content .video iframe {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  .blog-content ul li {
+    @apply dark:text-white;
+  }
+
+  .blog-content em,
+  .blog-content h3 {
+    @apply dark:text-white;
+  }
+
+  .blog-content .grid-images {
+    @apply grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))];
+  }
+  .custom-break-word {
+      overflow-wrap: anywhere;
+  }
+  pre{
+  	max-width: 85vw;
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Layout from "./Layout.astro";
+
+export interface Props {
+  title: string;
+  description: string;
+  name: string;
+}
+
+const { title, description, name } = Astro.props;
+---
+
+<Layout title={title}>
+  <section id="image" class="bg-[#F2F1ED] dark:bg-[#2d2d2d]">
+    <div class="grid gap-4 text-center px-5 py-16">
+      <h1 class="text-5xl font-bold lg:text-7xl dark:text-white">{name}</h1>
+      <p class="text-xl lg:text-2xl dark:text-[#c3c3c3]">
+        {description}
+      </p>
+    </div>
+  </section>
+  <slot />
+</Layout>
+
+<style>
+  html {
+    @apply bg-[#f2f1ed] dark:bg-[#2d2d2d];
+  }
+</style>

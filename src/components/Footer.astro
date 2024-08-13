@@ -1,0 +1,117 @@
+---
+import { Image } from "@astrojs/image/components";
+const year = new Date().getFullYear();
+
+const footerAreas = [
+  {
+    name: "Legal",
+    content: [
+      {
+        name: "Privacy",
+        url: "/legal/privacy",
+      },
+      {
+        name: "Legal Notice",
+        url: "/legal/legal-notice",
+      },
+    ],
+  },
+  {
+    name: "Community",
+    content: [
+      {
+        name: "Code of Conduct",
+        url: "/community/code-of-conduct",
+      },
+    ],
+  },
+  {
+    name: "Support",
+    content: [
+      {
+        name: "Source Code",
+        url: "https://github.com/thomaspeissl/thomaspeissl.com",
+      },
+    ],
+  },
+  {
+    name: "Follow me",
+    content: [
+      {
+        name: "GitHub",
+        url: "https://github.com/thomaspeissl/",
+      },
+      {
+         name: "Reddit",
+         url: "https://www.reddit.com/user/logTom/"
+       }
+    ],
+  },
+];
+---
+
+<footer>
+  <div class="bg-[#f2f1ed] dark:bg-[#2d2d2d] py-16">
+    <section
+      class="grid gap-14 px-5 lg:grid-cols-2 container mx-auto dark:text-white"
+    >
+      <div class="grid gap-3">
+        <Image
+          src="/logos/werkstattl-logo.webp"
+          width={404}
+          height={87}
+          alt="Werkstattl logo"
+          format="webp"
+          class="w-32 dark:invert"
+        />
+        <p>Made with ❤️ by Thomas Peißl.</p>
+      </div>
+      <div class="grid gap-3">
+        <p>
+          I'm Thomas, a web developer and Linux enthusiast. Follow my journey for more tips on web development and Linux.
+        </p>
+        <p>
+          <small>Much of my work, <a class="link" href="https://github.com/thomaspeissl/thomaspeissl.com/">including this website</a>, is open-source.</small>
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="bg-[#e4e3df] dark:bg-[#181818] py-16 grid gap-10">
+    <section
+      class="grid container mx-auto gap-3 px-5 lg:flex lg:justify-between"
+    >
+      {
+        footerAreas.map((area) => {
+          const { name, content } = area;
+          return (
+            <div class="grid gap-5 py-2 dark:text-white">
+              <h2 class="text-xl font-bold">{name}</h2>
+              <ul class="grid gap-1">
+                {content.map((content) => {
+                  const { name, url } = content;
+                  return (
+                    <li>
+                      <a class="link" href={url}>
+                        {name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </section>
+    <small class="text-center dark:text-white">
+      Copyright © {year} 
+      <a href="/" class="link">Thomas Peißl</a>
+    </small>
+  </div>
+</footer>
+
+<style>
+  .link {
+    @apply text-[#282828] border-[#282828] border-b border-dotted dark:text-white dark:border-white;
+  }
+</style>
