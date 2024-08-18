@@ -1,6 +1,6 @@
-# thomaspeissl.com
+# werkstattl.com
 
-Thomas's personal website running on Astro and GitHub pages.
+Website running on Astro and GitHub pages.
 
 ## 🚀 Project Structure
 
