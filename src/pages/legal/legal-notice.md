@@ -1,6 +1,6 @@
 ---
 title: Legal notice
-description: Here you can find the legal notice of Thomas Peißl.
+description: Here you can find the legal notice of Werkstattl.
 layout: ../../layouts/BlogPostLayout.astro
 ---
 
@@ -8,7 +8,7 @@ layout: ../../layouts/BlogPostLayout.astro
 Ahornweg 15  
 9601 Arnoldstein  
 Austria  
-info@thomaspeissl.com
+info@werkstattl.com
 
 ## Timezone
 Central European Time (CET)  
