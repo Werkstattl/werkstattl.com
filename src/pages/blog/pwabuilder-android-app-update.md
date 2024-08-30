@@ -2,7 +2,7 @@
 title: "How to Release an Android App Update with PWABuilder"
 description: "Explore step-by-step guidelines on how to seamlessly roll out updates for your Android app using PWA Builder. Enhance user experience with the latest features and improvements."
 published: 2023-10-18
-layout: ../../../layouts/BlogPostLayout.astro 
+layout: ../../layouts/BlogPostLayout.astro 
 ---
 
 Releasing an Android app update is a crucial step for developers in ensuring that their app's users have access to the latest features, improvements, and security patches. If you've built a Progressive Web App (PWA) and want to update its Android version, PWA Builder is an invaluable tool that simplifies the process. In this post, we will delve into the three main steps to release an Android app update with PWA Builder:

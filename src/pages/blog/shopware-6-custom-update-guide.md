@@ -2,7 +2,7 @@
 title: "Update Shopware 6 with composer update --no-scripts"
 description: "Learn how to update Shopware 6 with a more robust alternative composer command. This guide provides step-by-step instructions for a hopefully seamless update process."
 published: 2024-04-29
-layout: ../../../layouts/BlogPostLayout.astro 
+layout: ../../layouts/BlogPostLayout.astro 
 ---
  
 Since I encountered multiple issues with the Shopware 6 update process, and one of the Shopware developers recommended using `composer update --no-scripts` instead of composer update, I decided to write a guide on how to update Shopware 6 using this command.

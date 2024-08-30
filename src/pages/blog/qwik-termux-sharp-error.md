@@ -2,7 +2,7 @@
 title: "How to Fix the Qwik Framework Sharp Error on Termux"
 description: "If you encounter the `sharp` module error when running `npm start` on your Android device, there's a simple solution."
 published: 2024-05-24
-layout: ../../../layouts/BlogPostLayout.astro 
+layout: ../../layouts/BlogPostLayout.astro 
 ---
 
 This method is tested on armv8l devices.
