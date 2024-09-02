@@ -34,17 +34,20 @@ const homeGaming = "/images/home-gaming.png";
       More
       <ArrowDown />
     </a>
+    <br>
   </section>
 
   <section id="next" class="feature-card desktop">
-    <br>
     <div class="grid gap-4 lg:text-start">
       <h2 class="h2">Work</h2>
       <p>Your faithful colleague by day.</p>
-      <a href="https://github.com/Werkstattl/OpenBlogware"
+      <a href="https://github.com/Werkstattl/OpenBlogware#readme"
       class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><Github />OpenBlogware</a>
+      ><Github />GitHub</a>
 
+      <a href="https://github.com/Werkstattl/OpenBlogware/releases"
+      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
+      ><ArrowDown />Download</a>
     </div>
     <Image
       src={homeRepo}
@@ -123,5 +126,9 @@ const homeGaming = "/images/home-gaming.png";
 
   .feature-card.desktop {
     @apply lg:grid-cols-2 lg:items-start;
+  }
+  
+  #next {
+    padding-top: 10vh;
   }
 </style>
