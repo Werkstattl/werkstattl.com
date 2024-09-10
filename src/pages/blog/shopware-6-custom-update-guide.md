@@ -5,9 +5,13 @@ published: 2024-04-29
 layout: ../../layouts/BlogPostLayout.astro 
 ---
  
-Since I encountered multiple issues with the Shopware 6 update process, and one of the Shopware developers recommended using `composer update --no-scripts` instead of composer update, I decided to write a guide on how to update Shopware 6 using this command.
+Since I encountered several issues during the Shopware 6 update process, and a Shopware developer recommended using `composer update --no-scripts` instead of `composer update`, I decided to write a guide on how to update Shopware 6 using this command.
 
-Note that this guide is valid if Shopware was installed using shopware-installer.phar.php and you have SSH access to the server. It may also work for other installations, but I haven't tested it.
+Please note that this guide is applicable if Shopware was installed using the shopware-installer.phar.php and you have SSH access to the server. While it may also work for other installation methods, I have not tested those.
+
+This guide allows you to specify the exact version of Shopware 6 you want to update to.
+
+You can find all [Shopware releases on GitHub](https://github.com/shopware/shopware/releases).
 
 ## Steps to Update Shopware 6 with Composer
 
