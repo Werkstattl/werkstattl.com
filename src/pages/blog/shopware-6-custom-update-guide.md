@@ -71,3 +71,10 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      ```sh
      bin/console cache:clear
      ```
+
+Health check errors may occur after the update. 
+To resolve them, close the browser and run the clear cache command again.
+
+If you encounter any issues, check the logs and resolve them accordingly.
+
+I can also recommend joining the [Shopware Slack Community](https://slack.shopware.com/) and asking for help in the `#shopware6` channel.
