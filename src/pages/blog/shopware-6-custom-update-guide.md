@@ -1,6 +1,6 @@
 --- 
 title: "Update Shopware 6 with composer update --no-scripts"
-description: "Learn how to update Shopware 6 with a more robust alternative composer command. This guide provides step-by-step instructions for a hopefully seamless update process."
+description: "Learn how to update Shopware 6 with a alternative composer command. This guide provides step-by-step instructions for a hopefully seamless update process."
 published: 2024-04-29
 layout: ../../layouts/BlogPostLayout.astro 
 ---
