@@ -24,35 +24,39 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      bin/console system:update:prepare
      ```
 
-3. **Update Composer Dependencies:**
-   - Open `composer.json` and update the versions for the following packages:
-     - `shopware/core`
-     - `shopware/administration`
-     - `shopware/elasticsearch`
-     - `shopware/storefront`
-   - If you have installed any plugins using Composer, update their versions as well.
+3. **Check the Target Version's composer.json:**
+   - Navigate to the [Shopware production template](https://github.com/shopware/production) and locate the `composer.json` file for the version you want to update to. You can find the appropriate file by switching to the corresponding Git tag.
+   - [Shopware production composer.json (v6.6.9.0)](https://github.com/shopware/production/blob/v6.6.9.0/composer.json)
 
-4. **Execute Composer Update:**
+4. **Update Your composer.json:**
+   - Open your Shopware `composer.json` file.
+   - Update the version of `shopware/core` to match the target version.
+   - Adjust other packages listed in the require section to align with the new version's dependencies.
+
+5. **Update Plugin Dependencies:** 
+   - If you have installed any plugins via Composer, ensure their versions are updated to be compatible with the target Shopware version.
+
+6. **Execute Composer Update:**
    - Run the following command to update dependencies:
      ```sh
      composer update --no-scripts
      ```
    - Composer will notify you of any conflicts. If conflicts occur, manually resolve them by editing the `composer.json` file and re-running the previous command. For example, when upgrading from Shopware 6.5 to 6.6, change the required package `symfony/runtime` to `>=5`. Or update PHP as required.
 
-5. **Remove Bin Directory:**
+7. **Remove Bin Directory:**
    - Remove the `bin` directory and index.php to ensure `recipes:install` can update files like `bin/console`:
      ```sh
      rm -rf bin
      rm public/index.php
      ```
 
-6. **Install Composer Recipes:**
+8. **Install Composer Recipes:**
    - Execute the following command to install Composer recipes:
      ```sh
      yes | composer recipes:install --force --reset
      ```
 
-7. **Finish the Update:**
+8. **Finish the Update:**
    - Run the following command to complete the update process:
      ```sh
      bin/console system:update:finish
@@ -78,3 +82,17 @@ To resolve them, close the browser and run the clear cache command again.
 If you encounter any issues, check the logs and resolve them accordingly.
 
 I can also recommend joining the [Shopware Slack Community](https://slack.shopware.com/) and asking for help in the `#shopware6` channel.
+
+### Known  errors
+
+- *Attempted to load class "SensioFrameworkExtraBundle" from namespace "Sensio\Bundle\FrameworkExtraBundle"*  
+  Workaround for removing these old packages:
+  ```sh
+  composer require sensio/framework-extra-bundle enqueue/enqueue-bundle sroze/messenger-enqueue-transport
+  composer remove sensio/framework-extra-bundle enqueue/enqueue-bundle sroze/messenger-enqueue-transport
+  ```
+- *Key provided is shorter than 2048 bits*  
+  Try regenerating the key:
+  ```sh
+  bin/console system:generate-jwt-secret --force
+  ```
