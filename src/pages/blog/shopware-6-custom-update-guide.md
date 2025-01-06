@@ -56,7 +56,7 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      yes | composer recipes:install --force --reset
      ```
 
-8. **Finish the Update:**
+9. **Finish the Update:**
    - Run the following command to complete the update process:
      ```sh
      bin/console system:update:finish
@@ -83,9 +83,11 @@ If you encounter any issues, check the logs and resolve them accordingly.
 
 I can also recommend joining the [Shopware Slack Community](https://slack.shopware.com/) and asking for help in the `#shopware6` channel.
 
-### Known  errors
+### Known errors
 
-- *Attempted to load class "SensioFrameworkExtraBundle" from namespace "Sensio\Bundle\FrameworkExtraBundle"*  
+- *Attempted to load class "HttpKernel"*  
+  Follow steps 3-8 above.
+- *Attempted to load class "SensioFrameworkExtraBundle"*  
   Workaround for removing these old packages:
   ```sh
   composer require sensio/framework-extra-bundle enqueue/enqueue-bundle sroze/messenger-enqueue-transport
@@ -96,3 +98,4 @@ I can also recommend joining the [Shopware Slack Community](https://slack.shopwa
   ```sh
   bin/console system:generate-jwt-secret --force
   ```
+- *Attempted to load class "HttpKernel" from namespace "Shopware\Core"
