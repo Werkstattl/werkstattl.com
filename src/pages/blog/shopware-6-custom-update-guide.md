@@ -98,4 +98,14 @@ I can also recommend joining the [Shopware Slack Community](https://slack.shopwa
   ```sh
   bin/console system:generate-jwt-secret --force
   ```
-- *Attempted to load class "HttpKernel" from namespace "Shopware\Core"
+- *Attempted to load class "HttpKernel" from namespace "Shopware\Core"  
+  This can be tricky. Try running these:
+  ```sh
+  chmod -R 775 var/cache
+  rm -rf vendor
+  composer install
+  composer update
+  composer dump-autoload
+  bin/console about
+  bin/console cache:clear
+  ```
