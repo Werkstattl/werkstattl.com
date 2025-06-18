@@ -57,8 +57,9 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      ```
 
 9. **Finish the Update:**
-   - Run the following command to complete the update process:
+   - Run the following commands to complete the update process:
      ```sh
+     bin/console cache:clear
      bin/console system:update:finish
      ```
 
