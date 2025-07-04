@@ -32,7 +32,7 @@ Our website is not directed at children under the age of 13, and we do not knowi
 
 We may update this privacy policy to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will post the updated Privacy Policy on this page with the revised "Effective Date."
 
-## Contact use
+## Contact us
 
 If you have any questions or concerns about this privacy policy or our privacy practices, please contact us at info@werkstattl.com.
 
