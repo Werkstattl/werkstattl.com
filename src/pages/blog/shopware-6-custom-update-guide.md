@@ -26,7 +26,7 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
 
 3. **Check the Target Version's composer.json:**
    - Navigate to the [Shopware production template](https://github.com/shopware/production) and locate the `composer.json` file for the version you want to update to. You can find the appropriate file by switching to the corresponding Git tag.
-   - [Shopware production composer.json (v6.6.9.0)](https://github.com/shopware/production/blob/v6.6.9.0/composer.json)
+   - [Shopware production composer.json (v6.7.0.1)](https://github.com/shopware/template/blob/v6.7.0.1/composer.json)
 
 4. **Update Your composer.json:**
    - Open your Shopware `composer.json` file.
@@ -77,15 +77,29 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      bin/console cache:clear
      ```
 
-Health check errors may occur after the update. 
-To resolve them, close the browser and run the clear cache command again.
+3. **Update All Apps:**
+   - If you have installed plugins with the new app system, update them with:
+     ```sh
+     bin/console app:refresh
+     ```
+
+4. **Rebuild the Storefront:**
+   - Rebuild the storefront to ensure all changes are applied:
+     ```sh
+     bin/console assets:install
+     bin/console bundle:dump
+     bin/console theme:compile
+     bin/console cache:clear
+     ```
 
 If you encounter any issues, check the logs and resolve them accordingly.
 
-I can also recommend joining the [Shopware Slack Community](https://slack.shopware.com/) and asking for help in the `#shopware6` channel.
+I can also recommend joining the [Shopware Discord Community](https://discord.gg/shopware) and asking for help there.
 
 ### Known errors
 
+- *Health check errors after the update.*  
+  Close the browser and run the clear cache command again.
 - *Attempted to load class "HttpKernel"*  
   Follow steps 3-8 above.
 - *Attempted to load class "SensioFrameworkExtraBundle"*  
