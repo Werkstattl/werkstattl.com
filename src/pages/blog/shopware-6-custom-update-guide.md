@@ -25,8 +25,8 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      ```
 
 3. **Check the Target Version's composer.json:**
-   - Navigate to the [Shopware production template](https://github.com/shopware/production) and locate the `composer.json` file for the version you want to update to. You can find the appropriate file by switching to the corresponding Git tag.
-   - [Shopware production composer.json (v6.7.0.1)](https://github.com/shopware/template/blob/v6.7.0.1/composer.json)
+   - Navigate to the [Shopware production template](https://github.com/shopware/template) and locate the `composer.json` file for the version you want to update to. You can find the appropriate file by switching to the corresponding Git tag.
+   - [Shopware production composer.json (v6.7.3.0)](https://github.com/shopware/template/blob/v6.7.3.0/composer.json)
 
 4. **Update Your composer.json:**
    - Open your Shopware `composer.json` file.
