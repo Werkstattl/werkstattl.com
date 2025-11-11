@@ -114,7 +114,7 @@ I can also recommend joining the [Shopware Discord Community](https://discord.gg
   # this command got removed in Shopware 6.7
   bin/console system:generate-jwt-secret --force
   ```
-- *Lcobucci\JWT\Signer\InvalidKeyProvided: Key provided is shorter than 256 bits*  
+- *Lcobucci\JWT\Signer\InvalidKeyProvided: Key provided is shorter than 256 bits / Backend login does not work*  
   Shopware 6.7+ uses APP_SECRET for JWT.
   ```sh
   bin/console system:generate-app-secret
