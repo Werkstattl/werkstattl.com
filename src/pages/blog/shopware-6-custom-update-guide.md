@@ -113,6 +113,12 @@ I can also recommend joining the [Shopware Discord Community](https://discord.gg
   ```sh
   bin/console system:generate-jwt-secret --force
   ```
+- *Lcobucci\JWT\Signer\InvalidKeyProvided: Key provided is shorter than 256 bits*  
+  Shopware 6.7 now uses APP_SECRET for JWT.
+  ```sh
+  bin/console system:generate-app-secret
+  ```
+  Copy the generated key to your `.env.local` file as `APP_SECRET=your_generated_key`.
 - *Attempted to load class "HttpKernel" from namespace "Shopware\Core"  
   This can be tricky. Try running these:
   ```sh
