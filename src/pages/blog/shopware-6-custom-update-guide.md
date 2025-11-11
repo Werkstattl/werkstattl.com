@@ -115,7 +115,7 @@ I can also recommend joining the [Shopware Discord Community](https://discord.gg
   bin/console system:generate-jwt-secret --force
   ```
 - *Lcobucci\JWT\Signer\InvalidKeyProvided: Key provided is shorter than 256 bits*  
-  Shopware 6.7 now uses APP_SECRET for JWT.
+  Shopware 6.7+ uses APP_SECRET for JWT.
   ```sh
   bin/console system:generate-app-secret
   ```
