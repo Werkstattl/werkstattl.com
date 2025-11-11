@@ -111,6 +111,7 @@ I can also recommend joining the [Shopware Discord Community](https://discord.gg
 - *Key provided is shorter than 2048 bits*  
   Try regenerating the key:
   ```sh
+  # this command got removed in Shopware 6.7
   bin/console system:generate-jwt-secret --force
   ```
 - *Lcobucci\JWT\Signer\InvalidKeyProvided: Key provided is shorter than 256 bits*  
