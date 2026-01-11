@@ -1,5 +1,8 @@
-BigScience Open RAIL-M License
-dated August 18, 2022
+---
+title: BigScience Open RAIL-M License
+description: dated August 18, 2022
+layout: ../../layouts/BlogPostLayout.astro
+---
 
 Section I: PREAMBLE
 

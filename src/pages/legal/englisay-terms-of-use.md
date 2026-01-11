@@ -1,4 +1,10 @@
-AI Usage Restrictions
+---
+title: EngliSay Terms of Use
+description: Terms of Use for the EngliSay Android AI speech app.
+layout: ../../layouts/BlogPostLayout.astro
+---
+
+## AI Usage Restrictions
 
 This app uses an AI model licensed under the BigScience OpenRAIL-M License.
 Users must comply with all applicable use-based restrictions, including but not limited to prohibitions on:
