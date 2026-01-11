@@ -4,7 +4,7 @@ description: dated August 18, 2022
 layout: ../../layouts/BlogPostLayout.astro
 ---
 
-Section I: PREAMBLE
+## Section I: PREAMBLE
 
 This Open RAIL-M License was created by BigScience, a collaborative open innovation project aimed at
 the responsible development and use of large multilingual datasets and Large Language Models
@@ -29,7 +29,7 @@ associated with the model.
 
 NOW THEREFORE, You and Licensor agree as follows:
 
-1. Definitions
+### Definitions
 (a) "License" means the terms and conditions for use, reproduction, and Distribution as defined in
 this document.
 (b) “Data” means a collection of information and/or content extracted from the dataset used with the
@@ -76,16 +76,18 @@ designated in writing by the copyright owner as "Not a Contribution."
 Contribution has been received by Licensor and subsequently incorporated within the Model.
 
 
-Section II: INTELLECTUAL PROPERTY RIGHTS
+## Section II: INTELLECTUAL PROPERTY RIGHTS
 
 Both copyright and patent grants apply to the Model, Derivatives of the Model and Complementary
 Material. The Model and Derivatives of the Model are subject to additional terms as described in Section III.
 
-2. Grant of Copyright License. Subject to the terms and conditions of this License, each Contributor
+###  Grant of Copyright License. 
+Subject to the terms and conditions of this License, each Contributor
 hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare, publicly display, publicly perform, sublicense, and distribute the
 Complementary Material, the Model, and Derivatives of the Model.
 
-3. Grant of Patent License. Subject to the terms and conditions of this License and where and as
+### Grant of Patent License.
+Subject to the terms and conditions of this License and where and as
 applicable, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge,
 royalty-free, irrevocable (except as stated in this paragraph) patent license to make, have made, use, offer
 to sell, sell, import, and otherwise transfer the Model and the Complementary Material, where such
@@ -96,9 +98,11 @@ or counterclaim in a lawsuit) alleging that the Model and/or Complementary Mater
 incorporated within the Model and/or Complementary Material constitutes direct or contributory patent
 infringement, then any patent licenses granted to You under this License for the Model and/or Work shall
 terminate as of the date such litigation is asserted or filed.
-Section III: CONDITIONS OF USAGE, DISTRIBUTION AND REDISTRIBUTION
 
-4. Distribution and Redistribution. You may host for Third Party remote access purposes (e.g.
+## Section III: CONDITIONS OF USAGE, DISTRIBUTION AND REDISTRIBUTION
+
+### Distribution and Redistribution. 
+You may host for Third Party remote access purposes (e.g.
 software-as-a-service), reproduce and distribute copies of the Model or Derivatives of the Model thereof
 in any medium, with or without modifications, provided that You meet the following conditions:
 
@@ -121,29 +125,34 @@ different license terms and conditions - respecting paragraph 4.a.
 of Your modifications, or for any such Derivatives of the Model as a whole, provided Your use,
 reproduction, and Distribution of the Model otherwise complies with the conditions stated in this License.
 
-5. Use-based restrictions. The restrictions set forth in Attachment A are considered Use-based restrictions.
+### Use-based restrictions. 
+The restrictions set forth in Attachment A are considered Use-based restrictions.
 Therefore You cannot use the Model and the Derivatives of the Model for the specified restricted uses. You
 may use the Model subject to this License, including only for lawful purposes and in accordance with the
 License. Use may include creating any content with, finetuning, updating, running, training, evaluating and/or
 reparametrizing the Model. You shall require all of Your users who use the Model or a Derivative of the Model
 to comply with the terms of this paragraph (paragraph 5).
 
-6. The Output You Generate. Except as set forth herein, Licensor claims no rights in the Output You
+### The Output You Generate. 
+Except as set forth herein, Licensor claims no rights in the Output You
 generate using the Model. You are accountable for the Output you generate and its subsequent uses. No
 use of the output can contravene any provision as stated in the License.
 
-Section IV: OTHER PROVISIONS
+## Section IV: OTHER PROVISIONS
 
-7. Updates and Runtime Restrictions. To the maximum extent permitted by law, Licensor reserves the
+### Updates and Runtime Restrictions. 
+To the maximum extent permitted by law, Licensor reserves the
 right to restrict (remotely or otherwise) usage of the Model in violation of this License, update the Model
 through electronic means, or modify the Output of the Model based on updates. You shall undertake
 reasonable efforts to use the latest version of the Model.
 
-8. Trademarks and related. Nothing in this License permits You to make use of Licensors’ trademarks,
+### Trademarks and related.
+Nothing in this License permits You to make use of Licensors’ trademarks,
 trade names, logos or to otherwise suggest endorsement or misrepresent the relationship between the
 parties; and any rights not expressly granted herein are reserved by the Licensors.
 
-9. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides
+### Disclaimer of Warranty. 
+Unless required by applicable law or agreed to in writing, Licensor provides
 the Model and the Complementary Material (and each Contributor provides its Contributions) on an "AS
 IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied,
 including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT,
@@ -152,7 +161,8 @@ determining the appropriateness of using or redistributing the Model, Derivative
 Complementary Material and assume any risks associated with Your exercise of permissions under this
 License.
 
-10. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence),
+### Limitation of Liability. 
+In no event and under no legal theory, whether in tort (including negligence),
 contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or
 agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect,
 special, incidental, or consequential damages of any character arising as a result of this License or out of
@@ -161,7 +171,8 @@ damages for loss of goodwill, work stoppage, computer failure or malfunction, or
 commercial damages or losses), even if such Contributor has been advised of the possibility of such
 damages.
 
-11. Accepting Warranty or Additional Liability. While redistributing the Model, Derivatives of the
+### Accepting Warranty or Additional Liability. 
+While redistributing the Model, Derivatives of the
 Model and the Complementary Material thereof, You may choose to offer, and charge a fee for, acceptance
 of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License.
 However, in accepting such obligations, You may act only on Your own behalf and on Your sole
@@ -169,14 +180,14 @@ responsibility, not on behalf of any other Contributor, and only if You agree to
 hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor
 by reason of your accepting any such warranty or additional liability.
 
-12. If any provision of this License is held to be invalid, illegal or unenforceable, the remaining
+If any provision of this License is held to be invalid, illegal or unenforceable, the remaining
 provisions shall be unaffected thereby and remain valid as if such provision had not been set forth herein.
 
 END OF TERMS AND CONDITIONS
 
-Attachment A
+## Attachment A
 
-Use Restrictions
+### Use Restrictions
 
 You agree not to use the Model or Derivatives of the Model:
 (a) In any way that violates any applicable national, federal, state, local or international law
