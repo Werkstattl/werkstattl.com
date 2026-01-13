@@ -9,6 +9,7 @@ import Layout from "../layouts/Layout.astro";
 const homeLatop = "/images/werkstattl-hero.webp";
 const homeRepo = "/images/home-repo.png";
 const homeGaming = "/images/home-gaming.png";
+const homeSpeech = "/images/englisay.webp";
 ---
 
 <Layout title="Werkstattl">
@@ -88,12 +89,21 @@ const homeGaming = "/images/home-gaming.png";
     />
   </section>
   <section class="feature-card desktop">
-    <div class="grid gap-4 lg:text-start lg:order-1">
+    <div class="grid gap-4 lg:text-start">
       <h2 class="h2">Speech</h2>
       <p>Your local robot voice.</p>
       <a href="https://play.google.com/store/apps/details?id=com.werkstattl.englisay2"
       class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
       ><GooglePlay />Google Play</a>
+    </div>
+    <Image
+      src={homeSpeech}
+      width={740}
+      height={240}
+      alt="Englisay - AI-created speech"
+      format="webp"
+      class="m-auto"
+    />
   </section>
   <section
     class="grid gap-4 lg:gap-10 text-center px-5 py-16 container mx-auto"
