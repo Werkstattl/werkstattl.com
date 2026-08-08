@@ -1,14 +1,13 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import ArrowDown from "../components/icons/ArrowDown.astro";
 import Github from "../components/icons/Github.astro";
 import GooglePlay from "../components/icons/GooglePlay.astro";
 import Browser from "../components/icons/Browser.astro";
 import Layout from "../layouts/Layout.astro";
-
-const homeRepo = "/images/home-repo.png";
-const homeGaming = "/images/home-gaming.png";
-const homeSpeech = "/images/englisay.webp";
+import homeRepo from "../assets/images/home-repo.png";
+import homeGaming from "../assets/images/home-gaming.png";
+import homeSpeech from "../assets/images/englisay.webp";
 ---
 
 <Layout title="Werkstattl">
@@ -162,6 +161,8 @@ const homeSpeech = "/images/englisay.webp";
 </Layout>
 
 <style>
+  @reference "tailwindcss";
+
   html {
     @apply dark:bg-[#242424];
   }

@@ -3,7 +3,18 @@ import FastArrowRight from "../../components/icons/FastArrowRight.astro";
 // import Layout from "../../layouts/Layout.astro";
 import LayoutPage from "../../layouts/LayoutPage.astro";
 
-const posts = await Astro.glob("./*.md");
+interface BlogPost {
+  frontmatter: {
+    title: string;
+    published: string;
+    description: string;
+  };
+  url: string;
+}
+
+const posts = Object.values(
+  import.meta.glob<BlogPost>("./*.md", { eager: true }),
+);
 ---
 
 <LayoutPage

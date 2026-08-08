@@ -1,5 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
+import logo from "../assets/logos/werkstattl-logo.webp";
 const year = new Date().getFullYear();
 
 const footerAreas = [
@@ -44,7 +45,7 @@ const footerAreas = [
     >
       <div class="grid gap-3">
         <Image
-          src="/logos/werkstattl-logo.webp"
+          src={logo}
           width={404}
           height={100}
           alt="Werkstattl logo"
@@ -98,6 +99,8 @@ const footerAreas = [
 </footer>
 
 <style>
+  @reference "tailwindcss";
+
   .link {
     @apply text-[#282828] border-[#282828] border-b border-dotted dark:text-white dark:border-white;
   }
