@@ -1,6 +1,6 @@
 ---
-title: EngliSay Terms of Use
-description: Terms of Use for the EngliSay Android AI speech app.
+title: NativeVoice Terms of Use
+description: Terms of Use for the NativeVoice Android AI speech app.
 layout: ../../layouts/BlogPostLayout.astro
 ---
 

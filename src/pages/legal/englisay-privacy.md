@@ -4,7 +4,7 @@ description: Read our privacy policy to understand how we protect your data. Lea
 layout: ../../layouts/BlogPostLayout.astro
 ---
 
-## Privacy policy for EngliSay
+## Privacy policy for NativeVoice
 
 Effective date: January 10, 2026
 
@@ -35,4 +35,3 @@ If you have any questions or concerns about this privacy policy or our privacy p
 By using our app, you consent to the terms of this privacy policy.
 
 Werkstattl info@werkstattl.com
-
