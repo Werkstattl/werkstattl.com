@@ -6,21 +6,56 @@ import GooglePlay from "../components/icons/GooglePlay.astro";
 import Browser from "../components/icons/Browser.astro";
 import Layout from "../layouts/Layout.astro";
 
-const homeLatop = "/images/werkstattl-hero.webp";
 const homeRepo = "/images/home-repo.png";
 const homeGaming = "/images/home-gaming.png";
 const homeSpeech = "/images/englisay.webp";
 ---
 
 <Layout title="Werkstattl">
-  <section class="grid justify-items-center gap-3 py-16 px-5">
-    <Image
-      src={homeLatop}
-      format="webp"
-      width={750}
-      height={403}
-      alt="Werkstattl"
-    />
+  <section class="hero grid justify-items-center gap-3 py-16 px-5">
+    <div
+      class="workshop-animation"
+      role="img"
+      aria-label="Eine kleine digitale Werkstatt, in der Ideen zu offenen Projekten werden"
+    >
+      <div class="workshop-glow" aria-hidden="true"></div>
+
+      <div class="workshop-window" aria-hidden="true">
+        <div class="window-bar">
+          <div class="window-dots"><span></span><span></span><span></span></div>
+          <span class="window-title">werkstattl / build</span>
+          <span class="window-status"><i></i> live</span>
+        </div>
+        <div class="code-area">
+          <div class="line line-1"><span></span></div>
+          <div class="line line-2"><span></span></div>
+          <div class="line line-3"><span></span></div>
+          <div class="line line-4"><span></span></div>
+          <div class="cursor"></div>
+        </div>
+        <div class="build-track">
+          <span>idea</span>
+          <i></i>
+          <span>build</span>
+          <i></i>
+          <span>open</span>
+        </div>
+      </div>
+
+      <div class="tool-card tool-code" aria-hidden="true">
+        <span>&lt;/&gt;</span>
+        <small>work</small>
+      </div>
+      <div class="tool-card tool-play" aria-hidden="true">
+        <span>▶</span>
+        <small>play</small>
+      </div>
+      <div class="tool-card tool-speech" aria-hidden="true">
+        <span class="sound-wave"><i></i><i></i><i></i></span>
+        <small>speech</small>
+      </div>
+    </div>
+
     <a
       href="https://github.com/werkstattl/"
       class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
@@ -152,6 +187,327 @@ const homeSpeech = "/images/englisay.webp";
   
   #next {
     padding-top: 10vh;
+  }
+
+  .hero {
+    overflow: hidden;
+  }
+
+  .workshop-animation {
+    --ink: #18181b;
+    --muted: #77727f;
+    --panel: rgba(255, 255, 255, 0.9);
+    --panel-solid: #ffffff;
+    --line: #e8e6eb;
+    --accent: #ff6b4a;
+    --accent-soft: #fff0eb;
+    position: relative;
+    width: min(100%, 570px);
+    height: 290px;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .workshop-glow {
+    position: absolute;
+    inset: 15% 8%;
+    z-index: -1;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 25% 35%, rgba(255, 107, 74, 0.2), transparent 35%),
+      radial-gradient(circle at 75% 60%, rgba(104, 126, 255, 0.18), transparent 38%);
+    filter: blur(26px);
+    animation: glow-breathe 5s ease-in-out infinite;
+  }
+
+  .workshop-window {
+    position: relative;
+    width: min(76%, 410px);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--panel);
+    box-shadow: 0 22px 60px rgba(38, 31, 48, 0.12);
+    backdrop-filter: blur(12px);
+    animation: window-float 5s ease-in-out infinite;
+  }
+
+  .window-bar {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .window-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #dedbe2;
+  }
+
+  .window-title {
+    flex: 1;
+    text-align: left;
+    letter-spacing: 0.03em;
+  }
+
+  .window-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .window-status i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #28b57a;
+    box-shadow: 0 0 0 4px rgba(40, 181, 122, 0.12);
+    animation: status-pulse 2s ease-out infinite;
+  }
+
+  .code-area {
+    position: relative;
+    display: grid;
+    gap: 12px;
+    padding: 25px 28px 22px;
+  }
+
+  .line {
+    height: 8px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #f1eff3;
+  }
+
+  .line span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--ink), #625d69);
+    transform-origin: left;
+    animation: write-line 4.2s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+  }
+
+  .line-1 { width: 72%; }
+  .line-2 { width: 90%; }
+  .line-3 { width: 56%; }
+  .line-4 { width: 78%; }
+  .line-2 span { animation-delay: 0.18s; }
+  .line-3 span { animation-delay: 0.36s; }
+  .line-4 span { animation-delay: 0.54s; }
+
+  .cursor {
+    position: absolute;
+    right: 28px;
+    bottom: 21px;
+    width: 2px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--accent);
+    animation: cursor-blink 0.9s steps(2, jump-none) infinite;
+  }
+
+  .build-track {
+    display: grid;
+    grid-template-columns: auto 1fr auto 1fr auto;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 22px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .build-track i {
+    position: relative;
+    height: 1px;
+    overflow: hidden;
+    background: var(--line);
+  }
+
+  .build-track i::after {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 1px;
+    background: var(--accent);
+    animation: track-progress 2.3s ease-in-out infinite;
+  }
+
+  .tool-card {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    gap: 3px;
+    width: 72px;
+    height: 68px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel-solid);
+    color: var(--ink);
+    box-shadow: 0 14px 34px rgba(38, 31, 48, 0.11);
+  }
+
+  .tool-card > span {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .tool-card small {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tool-code {
+    top: 30px;
+    left: 5px;
+    transform: rotate(-7deg);
+    animation: card-code-float 4s ease-in-out infinite;
+  }
+
+  .tool-play {
+    top: 45px;
+    right: 4px;
+    color: var(--accent);
+    transform: rotate(7deg);
+    animation: card-play-float 4.6s ease-in-out infinite;
+  }
+
+  .tool-speech {
+    right: 28px;
+    bottom: 18px;
+    transform: rotate(-4deg);
+    animation: card-speech-float 4.3s ease-in-out infinite;
+  }
+
+  .sound-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 18px;
+  }
+
+  .sound-wave i {
+    width: 3px;
+    border-radius: 99px;
+    background: var(--ink);
+    animation: sound-wave 0.9s ease-in-out infinite alternate;
+  }
+
+  .sound-wave i:nth-child(1) { height: 8px; }
+  .sound-wave i:nth-child(2) { height: 17px; animation-delay: -0.3s; }
+  .sound-wave i:nth-child(3) { height: 11px; animation-delay: -0.6s; }
+
+  @keyframes window-float {
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes glow-breathe {
+    50% { opacity: 0.65; transform: scale(1.08); }
+  }
+
+  @keyframes write-line {
+    0%, 12% { transform: scaleX(0); opacity: 0.4; }
+    42%, 82% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(0); opacity: 0.4; }
+  }
+
+  @keyframes cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  @keyframes status-pulse {
+    60% { box-shadow: 0 0 0 4px rgba(40, 181, 122, 0.12); }
+    100% { box-shadow: 0 0 0 10px rgba(40, 181, 122, 0); }
+  }
+
+  @keyframes track-progress {
+    from { transform: translateX(-120%); }
+    to { transform: translateX(320%); }
+  }
+
+  @keyframes card-code-float {
+    50% { transform: translate(4px, -8px) rotate(-4deg); }
+  }
+
+  @keyframes card-play-float {
+    50% { transform: translate(-3px, 8px) rotate(4deg); }
+  }
+
+  @keyframes card-speech-float {
+    50% { transform: translate(-6px, -7px) rotate(-1deg); }
+  }
+
+  @keyframes sound-wave {
+    to { transform: scaleY(0.45); opacity: 0.55; }
+  }
+
+  @media (max-width: 520px) {
+    .workshop-animation {
+      height: 255px;
+    }
+
+    .workshop-window {
+      width: 88%;
+    }
+
+    .tool-card {
+      width: 58px;
+      height: 56px;
+      border-radius: 13px;
+    }
+
+    .tool-code { left: -7px; }
+    .tool-play { right: -7px; }
+    .tool-speech { right: 5px; bottom: 8px; }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .workshop-animation {
+      --ink: #f5f3f7;
+      --muted: #aaa5b0;
+      --panel: rgba(45, 45, 48, 0.9);
+      --panel-solid: #303034;
+      --line: #45454a;
+      --accent-soft: #4b302b;
+    }
+
+    .workshop-window,
+    .tool-card {
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .window-dots span,
+    .line {
+      background: #48484d;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workshop-animation *,
+    section {
+      animation: none !important;
+    }
   }
 
   /* Subtle entrance animations */
