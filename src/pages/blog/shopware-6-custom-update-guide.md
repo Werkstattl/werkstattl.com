@@ -9,9 +9,30 @@ Since I encountered several issues during the Shopware 6 update process, and a S
 
 Please note that this guide is applicable if Shopware was installed using the shopware-installer.phar.php and you have SSH access to the server. While it may also work for other installation methods, I have not tested those.
 
-This guide allows you to specify the exact version of Shopware 6 you want to update to.
+This guide allows you to specify the exact version of Shopware 6 you want to update to. Always choose the latest available patch release for your target version.
 
 You can find all [Shopware releases on GitHub](https://github.com/shopware/shopware/releases).
+
+### Shopware 6.7 and Twig 3.28
+
+Twig 3.28 exposed an incompatibility in Shopware 6.7 releases up to 6.7.11.1. Depending on the Shopware version and the templates in use, this can cause an HTTP 500 error when rendering `sw_include`, including a completely inaccessible Administration.
+
+The issue is fixed in [Shopware 6.7.12.1](https://github.com/shopware/shopware/releases/tag/v6.7.12.1) and newer releases. If you are updating to Shopware 6.7, use version 6.7.12.1 or newer.
+
+If you must remain on an affected version, add Shopware's conflict repository and conflict package before running Composer:
+
+```sh
+composer config repositories.shopware-conflicts composer https://shopware.github.io/conflicts/
+composer require shopware/conflicts
+```
+
+If Twig 3.28 has already been installed and the Administration returns an HTTP 500 error, run the commands above and then let Composer resolve Twig to a compatible version:
+
+```sh
+composer update twig/twig --with-all-dependencies
+```
+
+For technical details, see [Shopware issue #18028](https://github.com/shopware/shopware/issues/18028).
 
 ## Steps to Update Shopware 6 with Composer
 
@@ -25,8 +46,8 @@ You can find all [Shopware releases on GitHub](https://github.com/shopware/shopw
      ```
 
 3. **Check the Target Version's composer.json:**
-   - Navigate to the [Shopware production template](https://github.com/shopware/template) and locate the `composer.json` file for the version you want to update to. You can find the appropriate file by switching to the corresponding Git tag.
-   - [Shopware production composer.json (v6.7.3.0)](https://github.com/shopware/template/blob/v6.7.3.0/composer.json)
+   - Open the [composer.json from the Shopware production template](https://github.com/shopware/template/blob/trunk/composer.json).
+   - The link initially shows the `trunk` development version. Use the branch/tag selector above the file on GitHub and select the tag that exactly matches your target Shopware version. Only keep `trunk` selected if you intentionally want the current development version.
 
 4. **Update Your composer.json:**
    - Open your Shopware `composer.json` file.
