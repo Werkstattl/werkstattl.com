@@ -7,7 +7,7 @@ import Browser from "../components/icons/Browser.astro";
 import Layout from "../layouts/Layout.astro";
 import homeRepo from "../assets/images/home-repo.png";
 import homeGaming from "../assets/images/home-gaming.png";
-import homeSpeech from "../assets/images/englisay.webp";
+import homeSpeech from "../assets/images/nativevoice-promo.webp";
 ---
 
 <Layout title="Werkstattl">
@@ -122,21 +122,21 @@ import homeSpeech from "../assets/images/englisay.webp";
       class="m-auto"
     />
   </section>
-  <section class="feature-card desktop">
+  <section class="feature-card desktop speech-card">
     <div class="grid gap-4 lg:text-start">
       <h2 class="h2">Speech</h2>
-      <p>Your local robot voice.</p>
+      <p>Private text-to-speech, fully on-device.</p>
       <a href="https://play.google.com/store/apps/details?id=com.werkstattl.englisay2"
       class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
       ><GooglePlay />Google Play</a>
     </div>
     <Image
       src={homeSpeech}
-      width={740}
-      height={240}
-      alt="NativeVoice - AI-created speech"
+      width={580}
+      height={725}
+      alt="NativeVoice offline text-to-speech app for Android"
       format="webp"
-      class="m-auto"
+      class="m-auto rounded-[2rem] shadow-2xl"
     />
   </section>
   <section
@@ -184,6 +184,10 @@ import homeSpeech from "../assets/images/englisay.webp";
 
   .feature-card.desktop {
     @apply lg:grid-cols-2 lg:items-start;
+  }
+
+  .speech-card {
+    @apply lg:items-center;
   }
   
   #next {
