@@ -21,10 +21,12 @@ const updated = frontmatter.updated ?? null;
 >
   <section class="bg-[#F2F1ED] dark:bg-[#2d2d2d]">
     <div class="grid gap-4 text-center px-5 py-16 container mx-auto">
-      <h1 class="text-5xl font-bold lg:text-7xl dark:text-white custom-break-word">
+      <h1
+        class="text-4xl font-bold sm:text-5xl lg:text-6xl dark:text-white custom-break-word text-balance mx-auto max-w-4xl"
+      >
         {frontmatter.title}
       </h1>
-      <p class="text-xl lg:text-2xl dark:text-[#c3c3c3]">
+      <p class="text-xl lg:text-2xl dark:text-[#c3c3c3] mx-auto max-w-2xl text-balance">
         {frontmatter.description}
       </p>
       {
@@ -58,35 +60,44 @@ const updated = frontmatter.updated ?? null;
     @apply bg-[#f2f1ed] dark:bg-[#2d2d2d];
   }
   .blog-content {
-    @apply container mx-auto px-5 grid gap-3 p-16;
+    @apply mx-auto w-full max-w-3xl px-5 py-16;
   }
 
   .blog-content img {
-    @apply mx-auto;
+    @apply mx-auto my-6 rounded-xl;
   }
 
   .blog-content h2 {
-    @apply font-bold text-4xl after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-10 after:rounded-lg after:my-2 dark:text-white;
+    @apply mt-14 mb-5 scroll-mt-24 text-4xl font-bold after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-10 after:rounded-lg after:my-2 dark:text-white;
   }
 
   .blog-content h3 {
-    @apply font-bold text-3xl after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-10 after:rounded-lg after:my-2 dark:text-white;
+    @apply mt-12 mb-4 scroll-mt-24 text-2xl font-bold after:content-[''] after:block after:bg-[#ffbf48] after:h-1 after:w-6 after:rounded-lg after:my-2 dark:text-white;
+  }
+
+  .blog-content > :first-child {
+    @apply mt-0;
   }
 
   .blog-content p {
-    @apply text-xl dark:text-white;
+    @apply my-5 text-xl leading-relaxed dark:text-white;
+  }
+
+  .blog-content strong {
+    @apply font-bold dark:text-white;
   }
 
   .blog-content pre {
-    @apply p-6 rounded-md bg-[#282936] text-[#e9e9f4];
+    @apply my-5 max-w-full overflow-x-auto rounded-xl p-5 text-base leading-relaxed;
   }
 
-  .blog-content pre span {
-    @apply text-[#a1efe4];
+  /* Inline code only — highlighted code inside <pre> keeps its own colors. */
+  .blog-content :not(pre) > code {
+    @apply box-decoration-clone rounded-md bg-[#282828]/10 px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/15;
   }
 
-  .blog-content a {
-    @apply text-[#282828] border-[#282828] border-b border-dotted dark:text-white dark:border-white;
+  .blog-content :is(p, li, h2, h3) a {
+    @apply font-medium text-[#282828] underline decoration-[#ffbf48] decoration-2 underline-offset-4 transition-colors hover:decoration-[#282828] dark:text-white dark:hover:decoration-white;
   }
 
   .blog-content .video {
@@ -97,8 +108,48 @@ const updated = frontmatter.updated ?? null;
     @apply absolute top-0 left-0 w-full h-full;
   }
 
-  .blog-content ul li {
-    @apply dark:text-white;
+  .blog-content li {
+    @apply text-xl leading-relaxed dark:text-white;
+  }
+
+  .blog-content ul {
+    @apply my-5 list-disc pl-6 marker:text-[#ffbf48];
+  }
+
+  .blog-content ul > li + li {
+    @apply mt-2;
+  }
+
+  .blog-content ol {
+    counter-reset: step;
+    @apply my-8 list-none pl-0;
+  }
+
+  .blog-content ol > li {
+    counter-increment: step;
+    @apply relative pl-14;
+  }
+
+  .blog-content ol > li::before {
+    content: counter(step);
+    @apply absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-[#ffbf48] text-lg font-bold text-[#282828];
+  }
+
+  .blog-content ol > li + li {
+    @apply mt-5;
+  }
+
+  /* Loose (multi-paragraph) steps need more air than a plain numbered list. */
+  .blog-content ol > li:has(> p) + li {
+    @apply mt-10;
+  }
+
+  .blog-content ol > li > p:first-child {
+    @apply mt-1 mb-3 text-2xl font-bold dark:text-white;
+  }
+
+  .blog-content ol li > ul {
+    @apply my-3;
   }
 
   .blog-content em,
@@ -111,14 +162,5 @@ const updated = frontmatter.updated ?? null;
   }
   .custom-break-word {
       overflow-wrap: anywhere;
-  }
-  pre{
-  	max-width: 85vw;
-  }
-  .blog-content ul {
-  	margin-left: 1em;
-  	list-style-type: disc;
-  	margin-bottom: 1em;
-  	padding-right: 1em;
   }
 </style>

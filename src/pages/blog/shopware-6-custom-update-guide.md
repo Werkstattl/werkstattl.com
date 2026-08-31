@@ -143,7 +143,7 @@ I can also recommend joining the [Shopware Discord Community](https://discord.gg
   bin/console system:generate-app-secret
   ```
   Copy the generated key to your `.env.local` file as `APP_SECRET=your_generated_key`.
-- *Attempted to load class "HttpKernel" from namespace "Shopware\Core"  
+- *Attempted to load class "HttpKernel" from namespace "Shopware\Core"*  
   This can be tricky. Try running these:
   ```sh
   chmod -R 775 var/cache
