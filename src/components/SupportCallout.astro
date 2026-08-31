@@ -5,10 +5,12 @@ import Star from "./icons/Star.astro";
 interface Props {
   // "Owner/Repo" of the project that fits the article, e.g. "Werkstattl/OpenBlogware"
   repo?: string;
+  // Display name, defaults to the repo name
+  repoLabel?: string;
 }
 
-const { repo } = Astro.props;
-const repoName = repo?.split("/").at(-1);
+const { repo, repoLabel } = Astro.props;
+const repoName = repoLabel ?? repo?.split("/").at(-1);
 ---
 
 <section class="support">

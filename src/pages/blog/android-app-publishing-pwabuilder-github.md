@@ -2,6 +2,8 @@
 title: "Publishing Android Apps with PWABuilder and GitHub Pages: Tips & Tricks"
 description: "Discover how to seamlessly publish Android apps with PWABuilder when hosted on GitHub Pages. Learn tips on ensuring a native-like experience without browser bars and addressing the `.well-known` folder issue with Jekyll."
 published: 2023-10-22
+repo: Werkstattl/quick-dungeon-crawler-rpg-od
+repoLabel: Quick Dungeon Crawler
 layout: ../../layouts/BlogPostLayout.astro
 ---
 
@@ -33,6 +35,6 @@ By adding this file, you're instructing GitHub Pages not to use Jekyll, ensuring
 
 ## Wrapping Up
 
-I recently published the Android game [Dungeon Crawler on Demand](https://play.google.com/store/apps/details?id=com.thomaspeissl.quick_dungeon_crawler_od.twa) with this exact steps.
+I published the first Android versions of the game [Quick Dungeon Crawler on Demand](https://play.google.com/store/apps/details?id=com.thomaspeissl.quick_dungeon_crawler_od.twa) with these exact steps, as a PWA packaged with PWABuilder. Current versions are standalone Google Play builds, but the [game's source code is still on GitHub](https://github.com/Werkstattl/quick-dungeon-crawler-rpg-od), including the `.nojekyll` file and the `.well-known` folder, if you want to see a working setup.
 
 Publishing an Android app with PWABuilder while hosting on GitHub Pages requires attention to some unique challenges. By understanding these issues and their solutions, you can ensure a smooth deployment of your PWA and its Android app counterpart. Happy coding!
