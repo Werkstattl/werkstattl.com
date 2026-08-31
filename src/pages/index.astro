@@ -5,6 +5,7 @@ import Github from "../components/icons/Github.astro";
 import GooglePlay from "../components/icons/GooglePlay.astro";
 import Browser from "../components/icons/Browser.astro";
 import Layout from "../layouts/Layout.astro";
+import PlayableGame from "../components/PlayableGame.astro";
 import homeRepo from "../assets/images/openblogware-promo.webp";
 import homeGaming from "../assets/images/qdc-promo.webp";
 import homeSpeech from "../assets/images/nativevoice-promo.webp";
@@ -114,7 +115,11 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
         browser.
       </p>
       <div class="actions">
-        <a class="btn btn-primary" href="https://dungeon.werkstattl.com">
+        <a
+          class="btn btn-primary"
+          href="https://dungeon.werkstattl.com"
+          data-play-game
+        >
           <Browser />
           Play in the browser
         </a>
@@ -138,14 +143,13 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
         </a>
       </div>
     </div>
-    <Image
-      src={homeGaming}
-      width={580}
-      height={725}
-      densities={[1, 1.5]}
+    <PlayableGame
+      title="Quick Dungeon Crawler"
+      src="https://dungeon.werkstattl.com/"
+      poster={homeGaming}
       alt="Quick Dungeon Crawler roguelite for Android and web"
-      format="webp"
-      class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
+      hint="Runs right here — no install, no account"
+      loadingLabel="Entering the dungeon…"
     />
   </section>
   <section class="feature-card desktop">
