@@ -10,12 +10,12 @@ import homeGaming from "../assets/images/qdc-promo.webp";
 import homeSpeech from "../assets/images/nativevoice-promo.webp";
 ---
 
-<Layout title="Werkstattl">
-  <section class="hero grid justify-items-center gap-3 py-16 px-5">
+<Layout title="Werkstattl — Open software from a small workshop">
+  <section class="hero grid justify-items-center gap-8 py-16 px-5">
     <div
       class="workshop-animation"
       role="img"
-      aria-label="Eine kleine digitale Werkstatt, in der Ideen zu offenen Projekten werden"
+      aria-label="A small digital workshop where ideas turn into open projects"
     >
       <div class="workshop-glow" aria-hidden="true"></div>
 
@@ -55,34 +55,49 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       </div>
     </div>
 
-    <a
-      href="https://github.com/werkstattl/"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-    >
-      <Github /> GitHub
-    </a>
-    
-    <a
-      href="#next"
-      class="grid gap-3 justify-items-center text-2xl mt-[5vh] dark:text-white"
-    >
-      More
-      <ArrowDown />
-    </a>
-    <br>
+    <div class="hero-copy grid gap-5 justify-items-center text-center">
+      <h1 class="h1">Open software from a small workshop</h1>
+      <p>
+        We build developer tools, games and privacy-friendly apps &mdash; and
+        share almost all of it as open source.
+      </p>
+      <div class="actions-center">
+        <a href="#next" class="btn btn-primary">
+          See our projects
+          <ArrowDown />
+        </a>
+        <a href="https://github.com/werkstattl/" class="btn btn-secondary">
+          <Github />
+          GitHub
+        </a>
+      </div>
+    </div>
   </section>
 
   <section id="next" class="feature-card desktop">
-    <div class="grid gap-4 lg:text-start">
-      <h2 class="h2">Work</h2>
-      <p>Your faithful colleague by day.</p>
-      <a href="https://github.com/Werkstattl/OpenBlogware#readme"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><Github />GitHub</a>
-
-      <a href="https://github.com/Werkstattl/OpenBlogware/releases"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><ArrowDown />Download</a>
+    <div class="grid gap-4 content-start lg:text-start">
+      <p class="eyebrow">Work</p>
+      <h2 class="h2">OpenBlogware</h2>
+      <p>
+        Your faithful colleague by day &mdash; the free, open-source blog plugin
+        for Shopware 6.
+      </p>
+      <div class="actions">
+        <a
+          class="btn btn-primary"
+          href="https://github.com/Werkstattl/OpenBlogware/releases"
+        >
+          <ArrowDown />
+          Download
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="https://github.com/Werkstattl/OpenBlogware#readme"
+        >
+          <Github />
+          GitHub
+        </a>
+      </div>
     </div>
     <Image
       src={homeRepo}
@@ -90,28 +105,41 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       height={725}
       alt="OpenBlogware open-source blog plugin for Shopware 6"
       format="webp"
-      class="m-auto rounded-[2rem] shadow-2xl"
+      class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
     />
   </section>
   <section class="feature-card desktop">
-    <div class="grid gap-4 lg:text-start lg:order-1">
-      <h2 class="h2">Play</h2>
-      <p>Your teammate by night.</p>
-      <a href="https://dungeon.werkstattl.com"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><Browser />Enter the Dungeon</a>
-      
-      <a href="https://play.google.com/store/apps/details?id=com.thomaspeissl.quick_dungeon_crawler_od.twa"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><GooglePlay />Google Play</a>
-
-      <a href="https://github.com/Werkstattl/quick-dungeon-crawler-rpg-od"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><Github />GitHub</a>
-
-      <a href="https://quickdungeoncrawler.com"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><Browser />Website</a>
+    <div class="grid gap-4 content-start lg:text-start lg:order-1">
+      <p class="eyebrow">Play</p>
+      <h2 class="h2">Quick Dungeon Crawler</h2>
+      <p>
+        Your teammate by night &mdash; a fast roguelite for Android and the
+        browser.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://dungeon.werkstattl.com">
+          <Browser />
+          Play in the browser
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="https://play.google.com/store/apps/details?id=com.thomaspeissl.quick_dungeon_crawler_od.twa"
+        >
+          <GooglePlay />
+          Google Play
+        </a>
+        <a
+          class="btn btn-secondary"
+          href="https://github.com/Werkstattl/quick-dungeon-crawler-rpg-od"
+        >
+          <Github />
+          GitHub
+        </a>
+        <a class="btn btn-secondary" href="https://quickdungeoncrawler.com">
+          <Browser />
+          Website
+        </a>
+      </div>
     </div>
     <Image
       src={homeGaming}
@@ -119,16 +147,26 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       height={725}
       alt="Quick Dungeon Crawler roguelite for Android and web"
       format="webp"
-      class="m-auto rounded-[2rem] shadow-2xl"
+      class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
     />
   </section>
-  <section class="feature-card desktop speech-card">
-    <div class="grid gap-4 lg:text-start">
-      <h2 class="h2">Speech</h2>
-      <p>Private text-to-speech, fully on-device.</p>
-      <a href="https://play.google.com/store/apps/details?id=com.werkstattl.englisay2"
-      class="bg-black font-medium text-white py-3 px-6 rounded-full text-xl flex items-center gap-2"
-      ><GooglePlay />Google Play</a>
+  <section class="feature-card desktop">
+    <div class="grid gap-4 content-start lg:text-start">
+      <p class="eyebrow">Speech</p>
+      <h2 class="h2">NativeVoice</h2>
+      <p>
+        Private text-to-speech that runs fully on your device &mdash; no cloud,
+        no account.
+      </p>
+      <div class="actions">
+        <a
+          class="btn btn-primary"
+          href="https://play.google.com/store/apps/details?id=com.werkstattl.englisay2"
+        >
+          <GooglePlay />
+          Google Play
+        </a>
+      </div>
     </div>
     <Image
       src={homeSpeech}
@@ -136,26 +174,23 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       height={725}
       alt="NativeVoice offline text-to-speech app for Android"
       format="webp"
-      class="m-auto rounded-[2rem] shadow-2xl"
+      class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
     />
   </section>
   <section
-    class="grid gap-4 lg:gap-10 text-center px-5 py-16 container mx-auto"
+    class="grid gap-6 justify-items-center text-center px-5 py-16 container mx-auto"
   >
-    <h2 class="h2">Free & Open Source</h2>
-    <p>
-      Most projects we've created are released under open source licenses, available for your review, contribution, or forking.
+    <h2 class="h2">Free &amp; Open Source</h2>
+    <p class="max-w-2xl">
+      Most of our projects are released under open source licenses &mdash; ready
+      for you to review, contribute to, or fork.
     </p>
-    <a
-      class="bg-black rounded-full font-medium text-white py-3 px-6 w-fit mx-auto flex items-center gap-2"
-      href="https://github.com/werkstattl/"
-    >
-      Fork on
-      <span>
+    <div class="actions-center">
+      <a class="btn btn-primary" href="https://github.com/werkstattl/">
         <Github />
-      </span>
-      GitHub
-    </a>
+        Fork us on GitHub
+      </a>
+    </div>
   </section>
 
 </Layout>
@@ -166,8 +201,16 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
   html {
     @apply dark:bg-[#242424];
   }
+  .h1 {
+    @apply text-4xl font-bold sm:text-5xl lg:text-6xl dark:text-white;
+  }
+
   .h2 {
-    @apply text-5xl font-bold lg:text-7xl dark:text-white;
+    @apply text-4xl font-bold lg:text-5xl dark:text-white;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-[#77727f] dark:text-[#a9a4b1];
   }
 
   .link {
@@ -178,18 +221,38 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
     @apply text-xl lg:text-2xl text-[#3F3B47] dark:text-[#c3c3c3];
   }
 
+  .hero-copy {
+    @apply max-w-2xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-[#18181b] text-white hover:bg-[#3f3b47] dark:bg-white dark:text-[#18181b] dark:hover:bg-[#dcdae0];
+  }
+
+  .btn-secondary {
+    @apply border border-[#d4d2d8] text-[#18181b] hover:border-[#18181b] hover:bg-[#f2f1ed] dark:border-[#4c4c52] dark:text-white dark:hover:border-white dark:hover:bg-[#2d2d2d];
+  }
+
+  .actions {
+    @apply flex flex-wrap gap-3 justify-center lg:justify-start mt-2;
+  }
+
+  .actions-center {
+    @apply flex flex-wrap gap-3 justify-center mt-2;
+  }
+
   .feature-card {
-    @apply grid gap-4 text-center px-5 py-16 container mx-auto;
+    @apply grid gap-8 text-center px-5 py-16 container mx-auto;
   }
 
   .feature-card.desktop {
-    @apply lg:grid-cols-2 lg:items-start;
+    @apply lg:grid-cols-2 lg:items-start lg:gap-16;
   }
 
-  .speech-card {
-    @apply lg:items-center;
-  }
-  
   #next {
     padding-top: 10vh;
   }
@@ -207,8 +270,8 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
     --accent: #ff6b4a;
     --accent-soft: #fff0eb;
     position: relative;
-    width: min(100%, 570px);
-    height: 290px;
+    width: min(100%, 620px);
+    height: 300px;
     display: grid;
     place-items: center;
     isolation: isolate;
@@ -228,7 +291,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
 
   .workshop-window {
     position: relative;
-    width: min(76%, 410px);
+    width: min(66%, 400px);
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 20px;
@@ -263,6 +326,10 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
 
   .window-title {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     text-align: left;
     letter-spacing: 0.03em;
   }
@@ -384,23 +451,23 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
   }
 
   .tool-code {
-    top: 30px;
-    left: 5px;
+    top: 26px;
+    left: 0;
     transform: rotate(-7deg);
     animation: card-code-float 4s ease-in-out infinite;
   }
 
   .tool-play {
-    top: 45px;
-    right: 4px;
+    top: 42px;
+    right: 0;
     color: var(--accent);
     transform: rotate(7deg);
     animation: card-play-float 4.6s ease-in-out infinite;
   }
 
   .tool-speech {
-    right: 28px;
-    bottom: 18px;
+    right: 6px;
+    bottom: 14px;
     transform: rotate(-4deg);
     animation: card-speech-float 4.3s ease-in-out infinite;
   }
@@ -469,22 +536,16 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
 
   @media (max-width: 520px) {
     .workshop-animation {
-      height: 255px;
+      height: 230px;
     }
 
     .workshop-window {
-      width: 88%;
+      width: 100%;
     }
 
     .tool-card {
-      width: 58px;
-      height: 56px;
-      border-radius: 13px;
+      display: none;
     }
-
-    .tool-code { left: -7px; }
-    .tool-play { right: -7px; }
-    .tool-speech { right: 5px; bottom: 8px; }
   }
 
   @media (prefers-color-scheme: dark) {
@@ -539,11 +600,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
   }
 
   /* Subtle hover animations */
-  a {
-    transition: transform 0.2s ease;
-  }
-
-  a:hover {
+  .btn:hover {
     transform: translateY(-2px);
   }
 

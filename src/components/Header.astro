@@ -23,34 +23,14 @@ const navbar = [
         class="w-32 dark:invert"
       />
     </a>
-    <button
-      id="menuIcon"
-      aria-label="menu"
-      class="grid gap-[2px] justify-center w-5 h-full lg:hidden"
-    >
-      <span
-        aria-hidden="true"
-        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
-      <span
-        aria-hidden="true"
-        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
-      <span
-        aria-hidden="true"
-        class="w-1 h-1 bg-black rounded-full dark:bg-white"></span>
-    </button>
-    <nav
-      id="menu"
-      class="hidden lg:grid lg:relative transition-all lg:top-0 lg:left-0 lg:right-0 fixed top-24 left-3 right-3 p-5 rounded-md drop-shadow-md lg:drop-shadow-none bg-transparent lg:p-0 dark:text-white"
-    >
-      <ul
-        class="grid lg:grid-flow-col justify-items-center gap-3 lg:gap-7 text-lg"
-      >
+    <nav id="menu" class="dark:text-white">
+      <ul class="flex items-center gap-5 lg:gap-7 text-lg">
         {
           navbar.map((page) => {
             const { title, url } = page;
             return (
               <li>
-                <a class="hover:opacity-50 transition-all p-5" href={url}>
+                <a class="hover:opacity-60 transition-opacity" href={url}>
                   {title}
                 </a>
               </li>
@@ -64,14 +44,8 @@ const navbar = [
 
 <script>
   const $header = document.querySelector("#header");
-  const $menuIcon = document.querySelector("#menuIcon");
-  const $menu = document.querySelector("#menu");
 
-  if ($header && $menuIcon && $menu) {
-    $menuIcon.addEventListener("click", () => {
-      $menu.classList.toggle("hidden");
-    });
-
+  if ($header) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 1) {
         $header.classList.remove("py-6", "bg-transparent");
@@ -93,14 +67,3 @@ const navbar = [
     });
   }
 </script>
-
-<style>
-  #menu {
-	background: #fff;
-  }
-  @media (prefers-color-scheme: dark) {
-  	#menu {
-  		color: #000;
-  	}
-  }
-</style>
