@@ -24,6 +24,28 @@ const {
 const base = Astro.site ?? Astro.url;
 const canonical = new URL(Astro.url.pathname, base);
 const socialImage = new URL(image, base);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": new URL("/#organization", base).href,
+      name: "Werkstattl",
+      url: new URL("/", base).href,
+      logo: new URL("/logos/werkstattl-logo.png", base).href,
+      sameAs: ["https://github.com/werkstattl/"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": new URL("/#website", base).href,
+      name: "Werkstattl",
+      url: new URL("/", base).href,
+      publisher: { "@id": new URL("/#organization", base).href },
+      inLanguage: "en",
+    },
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -36,6 +58,20 @@ const socialImage = new URL(image, base);
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="preload"
+      href="/fonts/WorkSans-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/WorkSans-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta
       name="theme-color"
       media="(prefers-color-scheme: light)"
@@ -71,6 +107,12 @@ const socialImage = new URL(image, base);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
   <body>
     <Header />
@@ -109,6 +151,8 @@ const socialImage = new URL(image, base);
   }
   html {
     font-family: "Work Sans", sans-serif;
+    /* Keeps anchor targets clear of the sticky header. */
+    scroll-padding-top: 6rem;
     @apply scroll-smooth;
   }
 

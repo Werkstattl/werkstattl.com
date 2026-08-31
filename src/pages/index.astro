@@ -99,6 +99,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       src={homeRepo}
       width={580}
       height={725}
+      densities={[1, 1.5]}
       alt="OpenBlogware open-source blog plugin for Shopware 6"
       format="webp"
       class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
@@ -141,6 +142,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       src={homeGaming}
       width={580}
       height={725}
+      densities={[1, 1.5]}
       alt="Quick Dungeon Crawler roguelite for Android and web"
       format="webp"
       class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
@@ -168,6 +170,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       src={homeSpeech}
       width={580}
       height={725}
+      densities={[1, 1.5]}
       alt="NativeVoice offline text-to-speech app for Android"
       format="webp"
       class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
@@ -246,11 +249,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
   }
 
   .feature-card.desktop {
-    @apply lg:grid-cols-2 lg:items-start lg:gap-16;
-  }
-
-  #next {
-    padding-top: 10vh;
+    @apply lg:grid-cols-2 lg:items-center lg:gap-16;
   }
 
   .hero {
@@ -576,13 +575,23 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
   section {
     animation: fadeInUp 0.6s ease-out both;
   }
-  
+
   section:nth-child(1) { animation-delay: 0.1s; }
   section:nth-child(2) { animation-delay: 0.2s; }
   section:nth-child(3) { animation-delay: 0.3s; }
   section:nth-child(4) { animation-delay: 0.4s; }
   section:nth-child(5) { animation-delay: 0.5s; }
   section:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Where supported, tie the animation to scroll instead of page load so the
+     lower sections animate when they actually come into view. */
+  @supports (animation-timeline: view()) {
+    section {
+      animation-delay: 0s;
+      animation-timeline: view();
+      animation-range: entry 0% entry 20%;
+    }
+  }
 
   @keyframes fadeInUp {
     from {
