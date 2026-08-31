@@ -1,10 +1,8 @@
 ---
-title: Privacy
-description: Read our privacy policy to understand how we protect your data. Learn about data collection, usage, and your rights. Your privacy matters to us.
+title: NativeVoice Privacy Policy
+description: How NativeVoice handles your data — no personal information is collected and nothing leaves your device.
 layout: ../../layouts/BlogPostLayout.astro
 ---
-
-## Privacy policy for NativeVoice
 
 Effective date: January 10, 2026
 
