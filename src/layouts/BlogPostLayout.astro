@@ -47,7 +47,7 @@ const updated = frontmatter.updated ?? null;
   </section>
   <section class="blog-content">
     <slot />
-    <SupportCallout />
+    <SupportCallout repo={frontmatter.repo} />
   </section>
 </Layout>
 
