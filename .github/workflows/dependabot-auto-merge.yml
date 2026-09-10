@@ -1,0 +1,62 @@
+name: Dependabot auto-merge
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find Dependabot pull request
+        id: pull-request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          pr_number=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/pulls" \
+            --jq 'map(select(.state == "open")) | .[0].number // empty')
+
+          if [ -z "$pr_number" ]; then
+            echo "No open pull request belongs to this CI run."
+            echo "is_dependabot=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          author=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}" --jq '.user.login')
+          echo "number=$pr_number" >> "$GITHUB_OUTPUT"
+
+          if [ "$author" = "dependabot[bot]" ]; then
+            echo "is_dependabot=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Pull request #${pr_number} belongs to ${author}, not Dependabot."
+            echo "is_dependabot=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Read Dependabot metadata
+        if: steps.pull-request.outputs.is_dependabot == 'true'
+        id: metadata
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ github.token }}
+          pull-request: ${{ steps.pull-request.outputs.number }}
+
+      - name: Merge patch and minor updates
+        if: >-
+          steps.pull-request.outputs.is_dependabot == 'true' &&
+          (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+           steps.metadata.outputs.update-type == 'version-update:semver-minor')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.pull-request.outputs.number }}
+        run: gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
