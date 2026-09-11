@@ -1,0 +1,97 @@
+name: Dependabot auto-merge
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-auto-merge-${{ github.event.workflow_run.head_sha }}
+  cancel-in-progress: true
+
+jobs:
+  auto-merge:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find Dependabot pull request
+        id: pull-request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          pull_requests=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            "repos/${GITHUB_REPOSITORY}/commits/${HEAD_SHA}/pulls")
+
+          matches=$(jq \
+            --arg sha "$HEAD_SHA" \
+            --arg repository "$GITHUB_REPOSITORY" \
+            '[.[] | select(
+              .state == "open" and
+              .head.sha == $sha and
+              .head.repo.full_name == $repository and
+              .base.ref == "main"
+            )]' <<< "$pull_requests")
+
+          match_count=$(jq 'length' <<< "$matches")
+
+          if [ "$match_count" -ne 1 ]; then
+            echo "Expected exactly one open pull request at tested commit ${HEAD_SHA}; found ${match_count}."
+            echo "is_dependabot=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          pr_number=$(jq -r '.[0].number' <<< "$matches")
+          author=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${pr_number}" --jq '.user.login')
+          echo "number=$pr_number" >> "$GITHUB_OUTPUT"
+
+          if [ "$author" = "dependabot[bot]" ]; then
+            echo "is_dependabot=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Pull request #${pr_number} belongs to ${author}, not Dependabot."
+            echo "is_dependabot=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Read Dependabot metadata
+        if: steps.pull-request.outputs.is_dependabot == 'true'
+        id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ github.token }}
+          pull-request: ${{ steps.pull-request.outputs.number }}
+
+      - name: Merge patch and minor updates
+        if: >-
+          steps.pull-request.outputs.is_dependabot == 'true' &&
+          (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+           steps.metadata.outputs.update-type == 'version-update:semver-minor')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          PR_NUMBER: ${{ steps.pull-request.outputs.number }}
+        run: |
+          gh pr merge "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --squash \
+            --delete-branch \
+            --match-head-commit "$HEAD_SHA"
+
+          # A merge made with GITHUB_TOKEN does not trigger push workflows.
+          # Confirm the PR was merged before deploying (it could be queued).
+          merged=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '.merged')
+          if [ "$merged" != "true" ]; then
+            echo "Pull request #${PR_NUMBER} has not merged; deployment was not started."
+            exit 1
+          fi
+
+          gh workflow run deploy.yaml --repo "$GITHUB_REPOSITORY" --ref main
