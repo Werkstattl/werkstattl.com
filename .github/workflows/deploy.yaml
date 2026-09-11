@@ -24,7 +24,7 @@ jobs:
         uses: withastro/action@v6
         with:
             path: . # The root location of your Astro project inside the repository. (optional)
-            node-version: 24 # Astro 7 requires Node 22.12 or newer.
+            node-version: 24 # Project dependencies require Node 22.19 or newer.
             package-manager: npm
 
   deploy:

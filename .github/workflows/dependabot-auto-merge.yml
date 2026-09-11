@@ -8,6 +8,7 @@ on:
       - completed
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -78,9 +79,19 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           PR_NUMBER: ${{ steps.pull-request.outputs.number }}
-        run: >-
-          gh pr merge "$PR_NUMBER"
-          --repo "$GITHUB_REPOSITORY"
-          --squash
-          --delete-branch
-          --match-head-commit "$HEAD_SHA"
+        run: |
+          gh pr merge "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --squash \
+            --delete-branch \
+            --match-head-commit "$HEAD_SHA"
+
+          # A merge made with GITHUB_TOKEN does not trigger push workflows.
+          # Confirm the PR was merged before deploying (it could be queued).
+          merged=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '.merged')
+          if [ "$merged" != "true" ]; then
+            echo "Pull request #${PR_NUMBER} has not merged; deployment was not started."
+            exit 1
+          fi
+
+          gh workflow run deploy.yaml --repo "$GITHUB_REPOSITORY" --ref main
