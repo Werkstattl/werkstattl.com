@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
 import PlayableGame from "../components/PlayableGame.astro";
 import homeRepo from "../assets/images/openblogware-promo.webp";
 import homeGaming from "../assets/images/qdc-promo.webp";
-import homeSpeech from "../assets/images/nativevoice-promo.webp";
+// import homeSpeech from "../assets/images/nativevoice-promo.webp"; // temporarily hidden from homepage
 ---
 
 <Layout title="Werkstattl — Open software from a small workshop">
@@ -148,6 +148,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       loadingLabel="Entering the dungeon…"
     />
   </section>
+  {/* NativeVoice block temporarily hidden from the homepage — restore by uncommenting.
   <section class="feature-card desktop">
     <div class="grid gap-4 content-start lg:text-start">
       <p class="eyebrow">Speech</p>
@@ -176,6 +177,7 @@ import homeSpeech from "../assets/images/nativevoice-promo.webp";
       class="m-auto rounded-[2rem] shadow-2xl border border-black/5 dark:border-white/10"
     />
   </section>
+  */}
   <section
     class="grid gap-6 justify-items-center text-center px-5 py-16 container mx-auto"
   >
